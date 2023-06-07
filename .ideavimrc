@@ -1,0 +1,72 @@
+"" Source your .vimrc
+"source ~/.vimrc
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+let mapleader=" "
+
+"Copy paste into a separate buffer.
+"Useful because replacing text normally overwrites the default buffer,
+"while that buffer's history cannot be accessed.
+map <leader>y "ay
+map <leader>p "ap
+map <leader>P "aP
+map <leader>d "ad
+
+"Not using these helpers.
+"map <Enter> O<ESC>
+"map K i<Enter><Esc> 
+
+"Move lines up or down in the usual Alt+j/k way
+map <M-j> <Action>(MoveLineDown)
+map <M-k> <Action>(MoveLineUp)
+
+"Keep the selection after indenting or dedenting
+vnoremap > >gv
+vnoremap < <gv
+vnoremap = =gv
+
+"Wrapping the visual selection in brackets
+"Not actually using this all too often
+xnoremap <leader>( c(<C-r>"<
+xnoremap <leader>[ c[<C-r>"]
+xnoremap <leader>{ c{<C-r>"}
+xnoremap <leader>< c<<C-r>">
+xnoremap <leader>` c`<C-r>"`
+xnoremap <leader>' c'<C-r>"'
+xnoremap <leader>" c"<C-r>""
+
+"A move convenent copy-paste to the system clipboard
+vmap <leader>c "*y
+vmap <leader>v "*p
+nmap <leader>c "*yy
+nmap <leader>v "*pp
+
+:nmap <c-t> /[A-Z]<return>
+:vmap <c-t> /[A-Z]<return>
+
+"set clipboard+=unnamed
+"set clipboard+=ideaput
+
+"These don't work for some reason
+"nnoremap \e :e ~/.ideavimrc<CR>
+"nnoremap \r <Action>(IdeaVim.ReloadVimRc.reload)
+
+"" -- "" to  -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+
+" Find more examples here: https://jb.gg/share-ideavimrc
