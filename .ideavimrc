@@ -51,6 +51,10 @@ nmap <leader>v "*pp
 :nmap <c-t> /[A-Z]<return>
 :vmap <c-t> /[A-Z]<return>
 
+"Go to definition things
+nmap gi <Action>(GotoImplementation)
+nmap gt <Action>(GotoTypeDeclaration)
+
 "set clipboard+=unnamed
 "set clipboard+=ideaput
 
