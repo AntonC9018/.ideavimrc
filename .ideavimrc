@@ -34,7 +34,7 @@ vnoremap = =gv
 
 "Wrapping the visual selection in brackets
 "Not actually using this all too often
-xnoremap <leader>( c(<C-r>"<
+xnoremap <leader>( c(<C-r>")
 xnoremap <leader>[ c[<C-r>"]
 xnoremap <leader>{ c{<C-r>"}
 xnoremap <leader>< c<<C-r>">
@@ -42,7 +42,7 @@ xnoremap <leader>` c`<C-r>"`
 xnoremap <leader>' c'<C-r>"'
 xnoremap <leader>" c"<C-r>""
 
-"A move convenent copy-paste to the system clipboard
+"A more convenient copy-paste to the system clipboard
 vmap <leader>c "*y
 vmap <leader>v "*p
 nmap <leader>c "*yy
