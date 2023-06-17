@@ -46,7 +46,7 @@ xnoremap <leader>" c"<C-r>""
 vmap <leader>c "*y
 vmap <leader>v "*p
 nmap <leader>c "*yy
-nmap <leader>v "*pp
+nmap <leader>v "*p
 
 :nmap <c-t> /[A-Z]<return>
 :vmap <c-t> /[A-Z]<return>
@@ -67,7 +67,7 @@ nmap gt <Action>(GotoTypeDeclaration)
 "map \r <Action>(ReformatCode)
 
 "" Map <leader>d to start debug
-map <leader>d <Action>(Debug)
+"map <leader>d <Action>(Debug)
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
