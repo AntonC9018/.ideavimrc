@@ -55,6 +55,8 @@ nmap <leader>v "*p
 nmap gi <Action>(GotoImplementation)
 nmap gt <Action>(GotoTypeDeclaration)
 
+nmap <leader>a ggVG
+
 "set clipboard+=unnamed
 "set clipboard+=ideaput
 
