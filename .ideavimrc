@@ -1,6 +1,3 @@
-"" Source your .vimrc
-"source ~/.vimrc
-
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
@@ -8,6 +5,9 @@ set scrolloff=5
 
 " Do incremental searching.
 set incsearch
+
+" Highlight unique characters in word when using f
+set quickscope
 
 let mapleader=" "
 
@@ -19,10 +19,6 @@ map <leader>p "ap
 map <leader>P "aP
 map <leader>d "ad
 
-"Not using these helpers.
-"map <Enter> O<ESC>
-"map K i<Enter><Esc> 
-
 "Move lines up or down in the usual Alt+j/k way
 map <M-j> <Action>(MoveLineDown)
 map <M-k> <Action>(MoveLineUp)
@@ -32,22 +28,15 @@ vnoremap > >gv
 vnoremap < <gv
 vnoremap = =gv
 
-"Wrapping the visual selection in brackets
-"Not actually using this all too often
-xnoremap <leader>( c(<C-r>")
-xnoremap <leader>[ c[<C-r>"]
-xnoremap <leader>{ c{<C-r>"}
-xnoremap <leader>< c<<C-r>">
-xnoremap <leader>` c`<C-r>"`
-xnoremap <leader>' c'<C-r>"'
-xnoremap <leader>" c"<C-r>""
-
 "A more convenient copy-paste to the system clipboard
 vmap <leader>c "*y
 vmap <leader>v "*p
+vmap <leader>V "*P
 nmap <leader>c "*yy
 nmap <leader>v "*p
+nmap <leader>V "*P
 
+"Go to next capital letter
 :nmap <c-t> /[A-Z]<return>
 :vmap <c-t> /[A-Z]<return>
 
@@ -55,24 +44,30 @@ nmap <leader>v "*p
 nmap gi <Action>(GotoImplementation)
 nmap gt <Action>(GotoTypeDeclaration)
 
+"Select everything
 nmap <leader>a ggVG
 
-"set clipboard+=unnamed
-"set clipboard+=ideaput
+"Search selection, you can then replace with "cgn"
+vmap <leader>s y/<C-r>"<CR>
 
-"These don't work for some reason
-"nnoremap \e :e ~/.ideavimrc<CR>
-"nnoremap \r <Action>(IdeaVim.ReloadVimRc.reload)
+nmap <leader>w <Action>(EditorToggleUseSoftWraps)
 
-"" -- "" to  -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
+map <leader>, f,a<CR><Esc>
 
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
+"visual: S" or e.g. S] to surround with "" or []
+"normal: cs"' to change " to '
+Plug 'tpope/vim-surround'
 
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
+"gr to replace motion with default register
+Plug 'vim-scripts/ReplaceWithRegister'
 
+"via -- to select arguments
+let g:argtextobj_pairs="(:),{:},<:>"
+Plug 'vim-scripts/argtextobj.vim'
 
-" Find more examples here: https://jb.gg/share-ideavimrc
+"cx{motion} -- to swap text
+"X -- in visual mode
+Plug 'tommcdo/vim-exchange'
+
+"{ and } match empty lines with indentation
+Plug 'dbakker/vim-paragraph-motion'
