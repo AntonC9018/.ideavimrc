@@ -1,13 +1,15 @@
-"" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
+"" -- Suggested options --
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5
 
 " Do incremental searching.
 set incsearch
 
-" Highlight unique characters in word when using f
-set quickscope
+"set sneak
+
+set relativenumber
+set number 
 
 let mapleader=" "
 
@@ -48,11 +50,17 @@ nmap gt <Action>(GotoTypeDeclaration)
 nmap <leader>a ggVG
 
 "Search selection, you can then replace with "cgn"
-vmap <leader>s y/<C-r>"<CR>
+vmap <leader>s y/<C-r>"<CR>Ncgn
 
 nmap <leader>w <Action>(EditorToggleUseSoftWraps)
 
 map <leader>, f,a<CR><Esc>
+
+map <leader>/f <Action>(FindInPath)
+map <leader>/h <Action>(ReplaceInPath)
+map <leader>/s <Action>(GoToSymbol)
+map <leader>/c <Action>(GoToAction)
+map <leader>/p <Action>(GoToFile)
 
 "visual: S" or e.g. S] to surround with "" or []
 "normal: cs"' to change " to '
