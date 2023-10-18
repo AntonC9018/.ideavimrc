@@ -9,7 +9,7 @@ set incsearch
 "set sneak
 
 set relativenumber
-set number 
+set number
 
 let mapleader=" "
 
@@ -62,10 +62,10 @@ map <leader>, f,a<CR><Esc>
 
 map <leader>/f <Action>(FindInPath)
 map <leader>/h <Action>(ReplaceInPath)
-map <leader>/s <Action>(GoToSymbol)
+map <leader>/s <Action>(GotoSymbol)
 "Command
-map <leader>/c <Action>(GoToAction)
-map <leader>/p <Action>(GoToFile)
+map <leader>/c <Action>(GotoAction)
+map <leader>/p <Action>(GotoFile)
 
 map H <Action>(CollapseRegion)
 map L <Action>(ExpandRegion)
