@@ -43,7 +43,7 @@ nmap gi <Action>(GotoImplementation)
 nmap gt <Action>(GotoTypeDeclaration)
 nmap ge <Action>(ReSharperGotoNextErrorInSolution)
 nmap gE <Action>(ReSharperGotoPrevErrorInSolution)
-nmap gr <Action>(FindUsages)
+nmap gR <Action>(FindUsages)
 
 "Select everything
 nmap <leader>a ggVG
@@ -66,6 +66,7 @@ map <leader>/s <Action>(GotoSymbol)
 "Command
 map <leader>/c <Action>(GotoAction)
 map <leader>/p <Action>(GotoFile)
+map <leader>/e <Action>(RecentFiles)
 
 map H <Action>(CollapseRegion)
 map L <Action>(ExpandRegion)
@@ -75,15 +76,15 @@ map <leader>db <Action>(ToggleLineBreakpoint)
 "DebugCome
 map <leader>dc <Action>(RunToCursor)
 
+imap <C-i> <Action>(ParameterInfo)
+
 "visual: S" or e.g. S] to surround with "" or []
 "normal: cs"' to change " to '
+"normal: ys<motion>" to surround with "
 Plug 'tpope/vim-surround'
 
 "gr to replace motion with default register
 Plug 'vim-scripts/ReplaceWithRegister'
-nmap gc  <Plug>ReplaceWithRegisterOperator
-nmap gcc <Plug>ReplaceWithRegisterLine
-xmap gc  <Plug>ReplaceWithRegisterVisual
 
 "via -- to select arguments
 let g:argtextobj_pairs="(:),{:},<:>"
