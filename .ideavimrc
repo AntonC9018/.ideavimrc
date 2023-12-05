@@ -87,7 +87,7 @@ map <leader>di <Action>(StepInto)
 "normal: ys<motion>" to surround with "
 Plug 'tpope/vim-surround'
 
-gr to replace motion with default register
+"gr to replace motion with default register
 Plug 'vim-scripts/ReplaceWithRegister'
 
 "via -- to select arguments
