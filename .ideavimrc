@@ -53,17 +53,18 @@ nmap <leader>a ggVG
 vmap <leader>gs y/<C-r>"<CR>Ncgn
 
 "I never use w for navigation.
-nmap w :w<CR>
+"nmap w :w<CR>
 
-nmap <leader>ww <Action>(EditorToggleUseSoftWraps)
-nmap <leader>wq <Action>(CloseAllEditorsButActive)
-nmap <leader>wQ <Action>(CloseAllEditors)
-nmap <leader>wu <Action>(ActivateUnitTestsToolWindow)
-nmap <leader>we <Action>(ActivateProjectToolWindow)
-nmap <leader>wf <Action>(ActivateFindToolWindow)
-nmap <leader>wg <Action>(CheckinProject)
-nmap <leader>wd <Action>(ShowBlankDiffWindow)
-nmap <leader>wt <Action>(JumpToLastWindow)
+nmap ww <Action>(EditorToggleUseSoftWraps)
+nmap wq <Action>(CloseAllEditorsButActive)
+nmap wQ <Action>(CloseAllEditors)
+nmap wu <Action>(ActivateUnitTestsToolWindow)
+nmap we <Action>(ActivateProjectToolWindow)
+nmap wf <Action>(ActivateFindToolWindow)
+nmap wg <Action>(CheckinProject)
+nmap wd <Action>(ShowBlankDiffWindow)
+nmap wt <Action>(JumpToLastWindow)
+nmap wp <Action>(WelcomeScreen.Plugins)
 "Ctrl+8 toggles the latest tool window, mapped via the IDE.
 
 nmap <leader>ref <Action>(ReformatCode)
@@ -115,6 +116,10 @@ Plug 'tommcdo/vim-exchange'
 
 "{ and } match empty lines with indentation
 Plug 'dbakker/vim-paragraph-motion'
+
+"gq to wrap column
+map gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)
+
 
 " Git stuff
 
