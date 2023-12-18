@@ -11,6 +11,12 @@ set incsearch
 set relativenumber
 set number
 
+set ideajoin
+set ideaput
+
+"https://github.com/JetBrains/ideavim/wiki/sethandler
+sethandler <C-e> a:ide
+
 let mapleader=" "
 
 "A more convenient copy-paste to the system clipboard.
