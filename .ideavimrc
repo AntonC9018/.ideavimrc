@@ -29,9 +29,45 @@ nmap <leader>p "*p
 nmap <leader>P "*P
 nmap <leader>d "*dd
 
+"Makes a map from Alt+<key> (and Command+<key> on Mac)
+"args is a dictionary:
+"   'mode' is the map function prefix. Can be 'n', 'v', 'vnoremap', etc.
+"   'modifiedKey' is the key that will be modified by alt
+"   'action' is the action it's going to be mapped to
+"mode can be omitted to mean just 'map' (all modes)
+function! AltMac(args)
+    let mode = get(a:args, 'mode', '')
+    let modeFuncName = mode . 'map'
+
+    if !has_key(a:args, 'modifiedKey')
+        echoerr "AltMac: 'modifiedKey' is required"
+        return
+    endif
+    let fromKey = a:args['modifiedKey']
+    if len(fromKey) != 1
+        echoerr "AltMac: 'modifiedKey' must be a single character"
+        return
+    endif
+
+    if !has_key(a:args, 'action')
+        echoerr "AltMac: 'action' is required"
+        return
+    endif
+    let toAction = a:args['action']
+    if len(toAction) == 0
+        echoerr "AltMac: 'action' must be a non-empty string"
+        return
+    endif
+
+    for altKeyLetter in ['M', 'D']
+        let from = '<' . altKeyLetter . '-' . fromKey . '>'
+        execute modeFuncName . ' ' . from . ' ' . toAction
+    endfor
+endfunction
+
 "Move lines up or down in the usual Alt+j/k way
-map <M-j> <Action>(MoveLineDown)
-map <M-k> <Action>(MoveLineUp)
+:call AltMac({ 'modifiedKey': 'j', 'action': '<Action>(MoveLineDown)' })
+:call AltMac({ 'modifiedKey': 'k', 'action': '<Action>(MoveLineUp)' })
 
 "Keep the selection after indenting or dedenting
 vnoremap > >gv
@@ -122,18 +158,28 @@ map gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)
 
 
 " Git stuff
+map <leader>gho <Action>(Github.Open.In.Browser)
 
 "TODO: Make this do an error sound if the file is not openable on github.
+map <leader>gho <Action>(Github.Open.In.Browser)
 " Git Hub Open
+map <leader>gho <Action>(Github.Open.In.Browser)
+map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gho <Action>(Github.Open.In.Browser)
 
 " Git blame
+map <leader>gho <Action>(Github.Open.In.Browser)
 " map <leader>gbl <Action>(???)
+map <leader>gho <Action>(Github.Open.In.Browser)
 
 " Diff of the current file
+map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gd <Action>(Compare.SameVersion)
+map <leader>gho <Action>(Github.Open.In.Browser)
 " 'Logo
+map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gl <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gL <Action>(LocalHistory.ShowHistory)
 
 
