@@ -16,6 +16,7 @@ set ideaput
 
 "https://github.com/JetBrains/ideavim/wiki/sethandler
 sethandler <C-e> a:ide
+sethandler <C-k> a:ide
 
 let mapleader=" "
 
@@ -80,6 +81,9 @@ vnoremap > >gv
 vnoremap < <gv
 vnoremap = =gv
 
+nnoremap <expr>; RepeatMotion(0)
+nnoremap <expr>, RepeatMotion(1)
+
 "Go to definition things
 nmap gi <Action>(GotoImplementation)
 nmap gt <Action>(GotoTypeDeclaration)
@@ -103,13 +107,18 @@ nmap wQ <Action>(CloseAllEditors)
 nmap wu <Action>(ActivateUnitTestsToolWindow)
 nmap we <Action>(ActivateProjectToolWindow)
 nmap wf <Action>(ActivateFindToolWindow)
-nmap wg <Action>(CheckinProject)
-nmap wd <Action>(ShowBlankDiffWindow)
+nmap wgi <Action>(CheckinProject)
+nmap wdi <Action>(ShowBlankDiffWindow)
+nmap wdg <Action>(ActivateDebugToolWindow)
 nmap wt <Action>(JumpToLastWindow)
 nmap wp <Action>(WelcomeScreen.Plugins)
 "Ctrl+8 toggles the latest tool window, mapped via the IDE.
 
 nmap <leader>ref <Action>(ReformatCode)
+vmap <leader>ref <Action>(ReformatCode)
+
+"Doesn't seem to work.
+"nmap <leader>inl <Action>(ToggleInlayHintsGloballyAction)
 
 "Broken in one way or another, so screw this one.
 "map <leader>, f,r<CR>
