@@ -127,7 +127,6 @@ nmap wp <Action>(WelcomeScreen.Plugins)
 "Ctrl+8 toggles the latest tool window, mapped via the IDE.
 
 nmap <leader>ref <Action>(ReformatCode)
-vmap <leader>ref <Action>(ReformatCode)
 
 "Doesn't seem to work.
 "nmap <leader>inl <Action>(ToggleInlayHintsGloballyAction)
