@@ -38,7 +38,7 @@ nmap <leader>d "*dd
 
 "Makes a map from Alt+<key> (and Command+<key> on Mac)
 "args is a dictionary:
-"   'mode' is the map function prefix. Can be 'n', 'v', 'vnoremap', etc.
+"   'mode' is the map function prefix. Can be 'n', 'v', 'vnore', etc.
 "   'modifiedKey' is the key that will be modified by alt
 "   'action' is the action it's going to be mapped to
 "mode can be omitted to mean just 'map' (all modes)
@@ -90,7 +90,13 @@ nmap gt <Action>(GotoTypeDeclaration)
 nmap gm <Action>(GotoSuperMethod)
 nmap ge <Action>(ReSharperGotoNextErrorInSolution)
 nmap gE <Action>(ReSharperGotoPrevErrorInSolution)
-nmap gu <Action>(FindUsages)
+
+"Local symbol
+nmap gs <Action>(FileStructurePopup)
+
+"Navigate methods
+nmap <C-m> <Action>(MethodUp)
+nmap M <Action>(MethodDown)
 
 "Select everything
 nmap <leader>a ggVG
@@ -110,6 +116,7 @@ nmap wf <Action>(ActivateFindToolWindow)
 nmap wgi <Action>(CheckinProject)
 nmap wdi <Action>(ShowBlankDiffWindow)
 nmap wdg <Action>(ActivateDebugToolWindow)
+nmap wgd <Action>(ActivateDebugToolWindow)
 nmap wt <Action>(JumpToLastWindow)
 nmap wp <Action>(WelcomeScreen.Plugins)
 "Ctrl+8 toggles the latest tool window, mapped via the IDE.
