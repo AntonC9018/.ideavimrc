@@ -36,6 +36,8 @@ nmap <leader>p "*p
 nmap <leader>P "*P
 nmap <leader>d "*dd
 
+nmap & v$
+
 "Makes a map from Alt+<key> (and Command+<key> on Mac)
 "args is a dictionary:
 "   'mode' is the map function prefix. Can be 'n', 'v', 'vnore', etc.
@@ -85,9 +87,11 @@ vnoremap = =gv
 nmap gi <Action>(GotoImplementation)
 nmap gt <Action>(GotoTypeDeclaration)
 nmap gm <Action>(GotoSuperMethod)
-nmap ge <Action>(ReSharperGotoNextErrorInSolution)
-nmap gE <Action>(ReSharperGotoPrevErrorInSolution)
+map ge <Action>(ReSharperGotoNextErrorInSolution)
+map gE <Action>(ReSharperGotoPrevErrorInSolution)
 nmap gu <Action>(FindUsages)
+nmap gc <Action>(VcsShowNextChangeMarker)
+nmap gC <Action>(VcsShowPrevChangeMarker)
 
 "Local symbol
 nmap gs <Action>(FileStructurePopup)
@@ -96,8 +100,8 @@ nmap gs <Action>(FileStructurePopup)
 nnoremap <leader>m m
 
 "Navigate methods
-nmap m <Action>(MethodDown)
-nmap M <Action>(MethodUp)
+map m <Action>(MethodDown)
+map M <Action>(MethodUp)
 
 "Select everything
 nmap <leader>a ggVG
@@ -179,31 +183,18 @@ Plug 'dbakker/vim-paragraph-motion'
 "gq to wrap column
 map gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)
 
-
 " Git stuff
-map <leader>gho <Action>(Github.Open.In.Browser)
-
 "TODO: Make this do an error sound if the file is not openable on github.
-map <leader>gho <Action>(Github.Open.In.Browser)
 " Git Hub Open
 map <leader>gho <Action>(Github.Open.In.Browser)
-map <leader>gho <Action>(Github.Open.In.Browser)
-map <leader>gho <Action>(Github.Open.In.Browser)
-
 " Git blame
-map <leader>gho <Action>(Github.Open.In.Browser)
 " map <leader>gbl <Action>(???)
-map <leader>gho <Action>(Github.Open.In.Browser)
 
 " Diff of the current file
-map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gd <Action>(Compare.SameVersion)
-map <leader>gho <Action>(Github.Open.In.Browser)
 " Log
-map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gl <Action>(Vcs.ShowTabbedFileHistory)
 map <leader>gL <Action>(LocalHistory.ShowHistory)
-
 
 " IdeaVim helper
 map <leader>Aid <Action>(VimFindActionIdAction)
