@@ -81,9 +81,6 @@ vnoremap > >gv
 vnoremap < <gv
 vnoremap = =gv
 
-nnoremap <expr>; RepeatMotion(0)
-nnoremap <expr>, RepeatMotion(1)
-
 "Go to definition things
 nmap gi <Action>(GotoImplementation)
 nmap gt <Action>(GotoTypeDeclaration)
