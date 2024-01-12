@@ -199,10 +199,9 @@ map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gd <Action>(Compare.SameVersion)
 map <leader>gho <Action>(Github.Open.In.Browser)
-" 'Logo
+" Log
 map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gl <Action>(Vcs.ShowTabbedFileHistory)
-map <leader>gho <Action>(Github.Open.In.Browser)
 map <leader>gL <Action>(LocalHistory.ShowHistory)
 
 
