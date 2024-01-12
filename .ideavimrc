@@ -92,9 +92,12 @@ nmap gu <Action>(FindUsages)
 "Local symbol
 nmap gs <Action>(FileStructurePopup)
 
+"Remap the marker
+nnoremap <leader>m m
+
 "Navigate methods
-nmap <C-m> <Action>(MethodUp)
-nmap M <Action>(MethodDown)
+nmap m <Action>(MethodDown)
+nmap M <Action>(MethodUp)
 
 "Select everything
 nmap <leader>a ggVG
