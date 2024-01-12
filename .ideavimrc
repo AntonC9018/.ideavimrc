@@ -90,6 +90,7 @@ nmap gt <Action>(GotoTypeDeclaration)
 nmap gm <Action>(GotoSuperMethod)
 nmap ge <Action>(ReSharperGotoNextErrorInSolution)
 nmap gE <Action>(ReSharperGotoPrevErrorInSolution)
+nmap gu <Action>(FindUsages)
 
 "Local symbol
 nmap gs <Action>(FileStructurePopup)
