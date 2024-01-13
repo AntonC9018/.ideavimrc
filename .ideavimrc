@@ -17,6 +17,8 @@ set ideaput
 "https://github.com/JetBrains/ideavim/wiki/sethandler
 sethandler <C-e> a:ide
 sethandler <C-k> a:ide
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
 
 let mapleader=" "
 
@@ -37,6 +39,8 @@ nmap <leader>P "*P
 nmap <leader>d "*dd
 
 nmap & v$
+map <C-j> <C-f>
+map <C-k> <C-b>
 
 "Makes a map from Alt+<key> (and Command+<key> on Mac)
 "args is a dictionary:
