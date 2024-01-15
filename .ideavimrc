@@ -16,9 +16,8 @@ set ideaput
 
 "https://github.com/JetBrains/ideavim/wiki/sethandler
 sethandler <C-e> a:ide
-sethandler <C-k> a:ide
-sethandler <C-j> a:vim
-sethandler <C-k> a:vim
+sethandler <C-k> n:vim i-x:ide
+sethandler <C-j> n:vim i-x:ide
 
 let mapleader=" "
 
