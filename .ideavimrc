@@ -202,3 +202,6 @@ map <leader>gL <Action>(LocalHistory.ShowHistory)
 
 " IdeaVim helper
 map <leader>Aid <Action>(VimFindActionIdAction)
+
+nmap ; <Action>(KJumpAction)
+:call AltMac({ 'modifiedKey': ';', 'action': '<Action>(KJumpAction.Char2)' })
