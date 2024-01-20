@@ -38,8 +38,8 @@ nmap <leader>P "*P
 nmap <leader>d "*dd
 
 nmap & v$
-map <C-j> <C-f>
-map <C-k> <C-b>
+map <C-j> <C-d>
+map <C-k> <C-u>
 
 "Makes a map from Alt+<key> (and Command+<key> on Mac)
 "args is a dictionary:
@@ -107,7 +107,8 @@ map m <Action>(MethodDown)
 map M <Action>(MethodUp)
 
 "Select everything
-nmap <leader>a ggVG
+Plug 'kana/vim-textobj-entire'
+nmap <leader>a vae
 
 "Search selection, you can then replace with "cgn"
 vmap <leader>gs y/<C-r>"<CR>Ncgn
