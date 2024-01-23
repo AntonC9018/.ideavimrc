@@ -11,9 +11,6 @@ set incsearch
 set relativenumber
 set number
 
-set ideajoin
-set ideaput
-
 "https://github.com/JetBrains/ideavim/wiki/sethandler
 sethandler <C-e> a:ide
 sethandler <C-k> n:vim i-x:ide
@@ -40,6 +37,8 @@ nmap <leader>d "*dd
 nmap & v$
 map <C-j> <C-d>
 map <C-k> <C-u>
+
+nmap <C-i> <Action>(ShowHoverInfo)
 
 "Makes a map from Alt+<key> (and Command+<key> on Mac)
 "args is a dictionary:
@@ -93,8 +92,6 @@ nmap gm <Action>(GotoSuperMethod)
 map ge <Action>(ReSharperGotoNextErrorInSolution)
 map gE <Action>(ReSharperGotoPrevErrorInSolution)
 nmap gu <Action>(FindUsages)
-nmap gc <Action>(VcsShowNextChangeMarker)
-nmap gC <Action>(VcsShowPrevChangeMarker)
 
 "Local symbol
 nmap gs <Action>(FileStructurePopup)
@@ -123,13 +120,15 @@ nmap wu <Action>(ActivateUnitTestsToolWindow)
 nmap wgu <Action>(ActivateFindToolWindow)
 nmap we <Action>(ActivateProjectToolWindow)
 nmap wf <Action>(ActivateFindToolWindow)
-nmap wgi <Action>(CheckinProject)
 nmap wdi <Action>(ShowBlankDiffWindow)
 nmap wdg <Action>(ActivateDebugToolWindow)
 nmap wgd <Action>(ActivateDebugToolWindow)
-nmap wt <Action>(JumpToLastWindow)
+nmap wn <Action>(JumpToLastWindow)
 nmap wp <Action>(WelcomeScreen.Plugins)
 "Ctrl+8 toggles the latest tool window, mapped via the IDE.
+
+nmap <leader>ur <Action>(RiderUnitTestRunContextAction)
+nmap <leader>ud <Action>(RiderUnitTestDebugContextAction)
 
 nmap <leader>ref <Action>(ReformatCode)
 
@@ -139,28 +138,16 @@ nmap <leader>ref <Action>(ReformatCode)
 "Broken in one way or another, so screw this one.
 "map <leader>, f,r<CR>
 
-"Used to be /, but it's way too hard to hit quickly.
-"I'll try s now.
-map <leader>sf <Action>(FindInPath)
-map <leader>sh <Action>(ReplaceInPath)
 map <leader>ss <Action>(GotoSymbol)
 "Command
-map <leader>sc <Action>(GotoAction)
+map <leader><leader> <Action>(GotoAction)
 map <leader>sp <Action>(GotoFile)
-map <leader>se <Action>(RecentFiles)
 
 "Really useful, it's a shame this doesn't work for blocks in Rider.
 "Give the issue a thumbs up:
 "https://youtrack.jetbrains.com/issue/RIDER-85651/Support-folding-anonymous-code-blocks
 map H <Action>(CollapseRegion)
 map L <Action>(ExpandRegion)
-
-"Research to do: I want a separate debug mode for this.
-"DebugBreakpoint
-map <leader>db <Action>(ToggleLineBreakpoint)
-"DebugCome
-map <leader>dc <Action>(RunToCursor)
-map <leader>di <Action>(StepInto)
 
 "Mapped this in the ide instead because it's bugged
 "map <C-i> <Action>(ParameterInfo)
@@ -199,9 +186,6 @@ map <leader>gd <Action>(Compare.SameVersion)
 " Log
 map <leader>gl <Action>(Vcs.ShowTabbedFileHistory)
 map <leader>gL <Action>(LocalHistory.ShowHistory)
-
-" IdeaVim helper
-map <leader>Aid <Action>(VimFindActionIdAction)
 
 nmap ; <Action>(KJumpAction)
 
