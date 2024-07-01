@@ -11,8 +11,13 @@ set incsearch
 set relativenumber
 set number
 
+set ideajoin
+set ideaput
+
 "https://github.com/JetBrains/ideavim/wiki/sethandler
-sethandler <C-e> a:ide
+sethandler <C-e> a:vim
+sethandler <C-b> a:ide
+sethandler <C-w>y a:ide
 sethandler <C-k> n:vim i-x:ide
 sethandler <C-j> n:vim i-x:ide
 
@@ -20,25 +25,19 @@ let mapleader=" "
 
 "A more convenient copy-paste to the system clipboard.
 "Used to map to another buffer, but I seem not to always use this instead.
-vmap <leader>c "*y
-vmap <leader>y "*y
-vmap <leader>v "*p
-nmap <leader>p "*p
-vmap <leader>P "*P
-vmap <leader>d "*d
+vmap <leader>c "+y
+vmap <leader>y "+y
+vmap <leader>v "+p
+nmap <leader>p "+p
+vmap <leader>P "+P
+vmap <leader>d "+d
 
-nmap <leader>c "*yy
-nmap <leader>y "*yy
-nmap <leader>v "*p
-nmap <leader>p "*p
-nmap <leader>P "*P
-nmap <leader>d "*dd
-
-nmap & v$
-map <C-j> <C-d>
-map <C-k> <C-u>
-
-nmap <C-i> <Action>(ShowHoverInfo)
+nmap <leader>c 0"+y$
+nmap <leader>y "+yy
+nmap <leader>v "+p
+nmap <leader>p "+p
+nmap <leader>P "+P
+nmap <leader>d "+dd
 
 "Makes a map from Alt+<key> (and Command+<key> on Mac)
 "args is a dictionary:
@@ -81,9 +80,9 @@ endfunction
 :call AltMac({ 'modifiedKey': 'k', 'action': '<Action>(MoveLineUp)' })
 
 "Keep the selection after indenting or dedenting
-vnoremap > >gv
-vnoremap < <gv
-vnoremap = =gv
+vnoremap > >`[V`]
+vnoremap < <`[V`]
+vnoremap = =`[V`]
 
 "Go to definition things
 nmap gi <Action>(GotoImplementation)
@@ -92,6 +91,8 @@ nmap gm <Action>(GotoSuperMethod)
 map ge <Action>(ReSharperGotoNextErrorInSolution)
 map gE <Action>(ReSharperGotoPrevErrorInSolution)
 nmap gu <Action>(FindUsages)
+nmap gc <Action>(VcsShowNextChangeMarker)
+nmap gC <Action>(VcsShowPrevChangeMarker)
 
 "Local symbol
 nmap gs <Action>(FileStructurePopup)
@@ -104,31 +105,31 @@ map m <Action>(MethodDown)
 map M <Action>(MethodUp)
 
 "Select everything
-Plug 'kana/vim-textobj-entire'
-nmap <leader>a vae
-
-"Search selection, you can then replace with "cgn"
-vmap <leader>gs y/<C-r>"<CR>Ncgn
+nmap <leader>a ggVG
 
 "I never use w for navigation.
 "nmap w :w<CR>
 
 nmap ww <Action>(EditorToggleUseSoftWraps)
+nmap wo <C-w>o<Action>(HideAllWindows)
+nmap W :w<CR>
+nmap Q :q<CR>
 nmap wq <Action>(CloseAllEditorsButActive)
 nmap wQ <Action>(CloseAllEditors)
 nmap wu <Action>(ActivateUnitTestsToolWindow)
 nmap wgu <Action>(ActivateFindToolWindow)
 nmap we <Action>(ActivateProjectToolWindow)
 nmap wf <Action>(ActivateFindToolWindow)
+nmap wd <Action>(ActivateProblemsViewToolWindow)
+nmap wgi <Action>(CheckinProject)
 nmap wdi <Action>(ShowBlankDiffWindow)
 nmap wdg <Action>(ActivateDebugToolWindow)
 nmap wgd <Action>(ActivateDebugToolWindow)
-nmap wn <Action>(JumpToLastWindow)
-nmap wp <Action>(WelcomeScreen.Plugins)
-"Ctrl+8 toggles the latest tool window, mapped via the IDE.
+nmap wt <Action>(JumpToLastWindow)
+nmap wp <Action>(GotoFile)
 
-nmap <leader>ur <Action>(RiderUnitTestRunContextAction)
-nmap <leader>ud <Action>(RiderUnitTestDebugContextAction)
+"Ctrl+8 toggles the latest tool window, mapped via the IDE.
+nmap wy <Action>(JumpToLastWindow)
 
 nmap <leader>ref <Action>(ReformatCode)
 
@@ -138,10 +139,15 @@ nmap <leader>ref <Action>(ReformatCode)
 "Broken in one way or another, so screw this one.
 "map <leader>, f,r<CR>
 
-map <leader>ss <Action>(GotoSymbol)
+"Used to be /, but it's way too hard to hit quickly.
+"I'll try s now.
+map wf <Action>(FindInPath)
+map wr <Action>(ReplaceInPath)
+map ws <Action>(GotoSymbol)
 "Command
-map <leader><leader> <Action>(GotoAction)
-map <leader>sp <Action>(GotoFile)
+map wc <Action>(GotoAction)
+map wp <Action>(GotoFile)
+map <C-e> <Action>(RecentFiles)
 
 "Really useful, it's a shame this doesn't work for blocks in Rider.
 "Give the issue a thumbs up:
@@ -149,8 +155,15 @@ map <leader>sp <Action>(GotoFile)
 map H <Action>(CollapseRegion)
 map L <Action>(ExpandRegion)
 
+"Research to do: I want a separate debug mode for this.
+"DebugBreakpoint
+map <leader>db <Action>(ToggleLineBreakpoint)
+"DebugCome
+map <leader>dc <Action>(RunToCursor)
+map <leader>di <Action>(StepInto)
+
 "Mapped this in the ide instead because it's bugged
-"map <C-i> <Action>(ParameterInfo)
+"map <C-u> <Action>(ParameterInfo)
 
 "visual: S" or e.g. S] to surround with "" or []
 "normal: cs"' to change " to '
@@ -187,83 +200,11 @@ map <leader>gd <Action>(Compare.SameVersion)
 map <leader>gl <Action>(Vcs.ShowTabbedFileHistory)
 map <leader>gL <Action>(LocalHistory.ShowHistory)
 
-nmap ; <Action>(KJumpAction)
+" IdeaVim helper
+map <leader>Aid <Action>(VimFindActionIdAction)
 
-map й q
-map ц w
-map у e
-map к r
-map е t
-map н y
-map г u
-map ш i
-map щ o
-map з p
-map х [
-map ъ ]
-map ф a
-map ы s
-map в d
-map а f
-map п g
-map р h
-map о j
-map л k
-map д l
-map ж ;
-map э '
-map ё `
-map я z
-map ч x
-map с c
-map м v
-map и b
-map т n
-map ь m
-map б ,
-map ю .
-
-map Й Q
-map Ц W
-map У E
-map К R
-map Е T
-map Н Y
-map Г U
-map Ш I
-map Щ O
-map З P
-map Х {
-map Ъ }
-map Ф A
-map Ы S
-map В D
-map А F
-map П G
-map Р H
-map О J
-map Л K
-map Д L
-map Ж :
-map Э "
-map Я Z
-map Ч X
-map С C
-map М V
-map И B
-map Т N
-map Ь M
-map Б <
-map Ю >
-map Ё ~
-
-map ă [
-map î ]
-map â \
-map ș ;
-map ț '
-map Ă {
-map Î }
-map Â |
-map Ș :
-map Ț "
+nmap <leader>* `[v`]
+nmap <leader>tw :%s/\s\+$//e<cr>
+nmap gb `]
+nmap <leader>wd :let@+=getcwd()
+nmap wt <Action>(ActivateTerminalToolWindow)
