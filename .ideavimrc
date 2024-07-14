@@ -2,6 +2,7 @@
 "" -- Suggested options --
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5
+set timeoutlen=10000
 
 " Do incremental searching.
 set incsearch
@@ -18,6 +19,7 @@ set ideaput
 sethandler <C-e> a:vim
 sethandler <C-b> a:ide
 sethandler <C-w>y a:ide
+sethandler <C-;> a:ide
 sethandler <C-k> n:vim i-x:ide
 sethandler <C-j> n:vim i-x:ide
 
@@ -25,19 +27,19 @@ let mapleader=" "
 
 "A more convenient copy-paste to the system clipboard.
 "Used to map to another buffer, but I seem not to always use this instead.
-vmap <leader>c "+y
-vmap <leader>y "+y
-vmap <leader>v "+p
-nmap <leader>p "+p
-vmap <leader>P "+P
-vmap <leader>d "+d
+vmap <leader>c "*y
+vmap <leader>y "*y
+vmap <leader>v "*p
+vmap <leader>p "*p
+vmap <leader>P "*P
+vmap <leader>d "*d
 
-nmap <leader>c 0"+y$
-nmap <leader>y "+yy
-nmap <leader>v "+p
-nmap <leader>p "+p
-nmap <leader>P "+P
-nmap <leader>d "+dd
+nmap <leader>c 0"*y$
+nmap <leader>y "*yy
+nmap <leader>v "*p
+nmap <leader>p "*p
+nmap <leader>P "*P
+nmap <leader>d "*dd
 
 "Makes a map from Alt+<key> (and Command+<key> on Mac)
 "args is a dictionary:
@@ -121,7 +123,7 @@ nmap wgu <Action>(ActivateFindToolWindow)
 nmap we <Action>(ActivateProjectToolWindow)
 nmap wf <Action>(ActivateFindToolWindow)
 nmap wd <Action>(ActivateProblemsViewToolWindow)
-nmap wgi <Action>(CheckinProject)
+nmap wc <Action>(CheckinProject)
 nmap wdi <Action>(ShowBlankDiffWindow)
 nmap wdg <Action>(ActivateDebugToolWindow)
 nmap wgd <Action>(ActivateDebugToolWindow)
@@ -145,7 +147,7 @@ map wf <Action>(FindInPath)
 map wr <Action>(ReplaceInPath)
 map ws <Action>(GotoSymbol)
 "Command
-map wc <Action>(GotoAction)
+map <leader><leader> <Action>(GotoAction)
 map wp <Action>(GotoFile)
 map <C-e> <Action>(RecentFiles)
 
@@ -208,3 +210,4 @@ nmap <leader>tw :%s/\s\+$//e<cr>
 nmap gb `]
 nmap <leader>wd :let@+=getcwd()
 nmap wt <Action>(ActivateTerminalToolWindow)
+nmap wE <Action>(RevealIn)
