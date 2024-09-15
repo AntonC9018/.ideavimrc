@@ -17,6 +17,7 @@ set ideaput
 
 "https://github.com/JetBrains/ideavim/wiki/sethandler
 sethandler <C-e> a:vim
+sethandler <J> a:vim
 sethandler <C-b> a:ide
 sethandler <C-w>y a:ide
 sethandler <C-;> a:ide
@@ -82,9 +83,9 @@ endfunction
 :call AltMac({ 'modifiedKey': 'k', 'action': '<Action>(MoveLineUp)' })
 
 "Keep the selection after indenting or dedenting
-vnoremap > >`[V`]
-vnoremap < <`[V`]
-vnoremap = =`[V`]
+vnoremap > >gv
+vnoremap < <gv
+vnoremap = =gv
 
 "Go to definition things
 nmap gi <Action>(GotoImplementation)
@@ -92,6 +93,8 @@ nmap gt <Action>(GotoTypeDeclaration)
 nmap gm <Action>(GotoSuperMethod)
 map ge <Action>(ReSharperGotoNextErrorInSolution)
 map gE <Action>(ReSharperGotoPrevErrorInSolution)
+map gy <Action>(GotoNextError)
+map gY <Action>(GotoPreviousError)
 nmap gu <Action>(FindUsages)
 nmap gc <Action>(VcsShowNextChangeMarker)
 nmap gC <Action>(VcsShowPrevChangeMarker)
@@ -133,7 +136,7 @@ nmap wp <Action>(GotoFile)
 "Ctrl+8 toggles the latest tool window, mapped via the IDE.
 nmap wy <Action>(JumpToLastWindow)
 
-nmap <leader>ref <Action>(ReformatCode)
+map <leader>ref <Action>(ReformatCode)
 
 "Doesn't seem to work.
 "nmap <leader>inl <Action>(ToggleInlayHintsGloballyAction)
@@ -211,3 +214,8 @@ nmap gb `]
 nmap <leader>wd :let@+=getcwd()
 nmap wt <Action>(ActivateTerminalToolWindow)
 nmap wE <Action>(RevealIn)
+
+map <leader>q <Action>(Console.Jdbc.Execute)
+map <leader>b <Action>(BuildCurrentProject)
+
+vmap * "ay/<C-r>a<CR>
