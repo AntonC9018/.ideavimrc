@@ -1,13 +1,7 @@
-" Show a few lines of context around the cursor. Note that this makes the
-"" -- Suggested options --
-" text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5
 set timeoutlen=10000
 
-" Do incremental searching.
 set incsearch
-
-"set sneak
 
 set relativenumber
 set number
@@ -85,7 +79,7 @@ endfunction
 "Keep the selection after indenting or dedenting
 vnoremap > >gv
 vnoremap < <gv
-vnoremap = =gv
+"vnoremap = =gv
 
 "Go to definition things
 nmap gi <Action>(GotoImplementation)
@@ -162,10 +156,10 @@ map L <Action>(ExpandRegion)
 
 "Research to do: I want a separate debug mode for this.
 "DebugBreakpoint
-map <leader>db <Action>(ToggleLineBreakpoint)
+"map <leader>db <Action>(ToggleLineBreakpoint)
 "DebugCome
-map <leader>dc <Action>(RunToCursor)
-map <leader>di <Action>(StepInto)
+"map <leader>dc <Action>(RunToCursor)
+"map <leader>di <Action>(StepInto)
 
 "Mapped this in the ide instead because it's bugged
 "map <C-u> <Action>(ParameterInfo)
@@ -219,3 +213,6 @@ map <leader>q <Action>(Console.Jdbc.Execute)
 map <leader>b <Action>(BuildCurrentProject)
 
 vmap * "ay/<C-r>a<CR>
+vmap <C-y> y`>
+nmap g* `<
+nmap g8 `>
