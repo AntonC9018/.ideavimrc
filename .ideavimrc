@@ -216,3 +216,9 @@ vmap * "ay/<C-r>a<CR>
 vmap <C-y> y`>
 nmap g* `<
 nmap g8 `>
+
+nnoremap + ==
+vnoremap + =
+
+:call AltMac({ 'mode': 'n', 'modifiedKey': '=', 'action': '<leader>*=' })
+nmap <leader>= <leader>*=
